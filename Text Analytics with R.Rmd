@@ -8,7 +8,7 @@ output: html_notebook
 install.packages(c("ggplot2","e1071","caret","quanteda","irlba","randomForest"))
 ```
 
-## Read and Clean Data
+## Read Data
 ```{r}
 rawSpamData=read.csv("data/spam.csv",stringsAsFactors = FALSE)
 # View(rawSpamData)
@@ -32,6 +32,32 @@ summary(spamData$Length)
 ## Visualize Data
 ```{r}
 library(ggplot2)
-ggplot2(spamData,aes(x=Length,fill=Label))+theme_bw()+
+ggplot(spamData,aes(x=Length,fill=Label))+theme_bw()+
   geom_histogram(binwidth=5)+labs(y="TextCount",x="Length of Text",title="Distribution of Text Lengths")
-``
+```
+## Preprocessing
+```{r}
+library(caret)
+set.seed(32984)
+indexes<-createDataPartition(spamData$Label,times=1,p=0.7,list=FALSE)
+train<-spamData[indexes,]
+test<-spamData[-indexes,]
+
+#Verify proprtions
+prop.table(table(train$Label))
+prop.table(table(test$Label))
+
+#Tokenize the text
+library(quanteda)
+trainTokens<-tokens(train$Text,what='word',
+                    remove_punct = TRUE,remove_numbers = TRUE,
+                    remove_hyphens = TRUE,remove_symbols = TRUE)
+
+#Remove stopwords
+trainTokens<-tokens_tolower(trainTokens)
+trainTokens<-tokens_select(trainTokens,stopwords(),selection = "remove")
+trainTokens<-tokens_wordstem(trainTokens,language = "english")
+
+#Bag of Words
+trainTokens<-dfm(trainTokens,tolower = FALSE)
+```

@@ -186,18 +186,49 @@ $(document).ready(function () {
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="read-and-clean-data" class="section level2">
-<h2>Read and Clean Data</h2>
+<div id="read-data" class="section level2">
+<h2>Read Data</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvcC50YWJsZSh0YWJsZShzcGFtRGF0YSRMYWJlbCkpXG5cbmBgYCJ9 -->
-<pre class="r"><code>prop.table(table(spamData$Label))
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmF3U3BhbURhdGE9cmVhZC5jc3YoXCJkYXRhL3NwYW0uY3N2XCIsc3RyaW5nc0FzRmFjdG9ycyA9IEZBTFNFKVxuIyBWaWV3KHJhd1NwYW1EYXRhKVxuc3BhbURhdGE9cmF3U3BhbURhdGFbLDE6Ml1cbnJtKHJhd1NwYW1EYXRhKVxubmFtZXMoc3BhbURhdGEpPC1jKCdMYWJlbCcsJ1RleHQnKVxuaGVhZChzcGFtRGF0YSlcbmBgYCJ9 -->
+<pre class="r"><code>rawSpamData=read.csv(&quot;data/spam.csv&quot;,stringsAsFactors = FALSE)
+# View(rawSpamData)
+spamData=rawSpamData[,1:2]
+rm(rawSpamData)
+names(spamData)&lt;-c('Label','Text')
+head(spamData)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6Nn0sInJkZiI6Ikg0c0lBQUFBQUFBQUJtMVRUVy9UUUJCMW5TYW9rUXBJbkpHR0N3R3B0ZUpBMUZ3UXFvb0tSUlFrMUVxNWJ1eXh2WGl6YS9ZalRqanhJN2h4NUxmeE53cXpycTJXRkV1MloyZmV6THg1dS92NXpYd3luQStESUFpRFhuOG5DSHRrN29iMDJRbDJnejMvWHdkQjcxRURDSUtIOUE3YVFLOWd5N3ZtcnFuKzU3NkQrTGVXZXF2QVNjc0ZmSEZheVJ3cXhhVTlnRVN6YjVzb2d1TVY0NEl0QklLU1lnTmN3c0xsM0lDRVhDT3pVQ3N0VWhBTWtBSlpoamFpcEJNdUVXeUJHaUZYRnRoU2tWVXpIMnZiUHY1VVVwTDI0UGVxNU5TMzVoazRhc0p2UUQ5UE5TS2d0THBwUEFFR2RVa2tFcldzd0NwS2tYQjZEQ2V1Z294TEpzQ1cxc0FrTmhiTzJRWW00L0UwZ2d0Y1c0OGkvT3dvbnNUZTBKZ2dYM1dsdnpvMGxpdjV6TmdVTEtFMXMvajg0dW5KeUFDckttbzRucjJjVG1ieGVIdzBWU3ZVOFd4a1dvcnhKYVJPZ3FGMlJnRXlUZWhDTlhOZFFnSk1rRWpweG12UmdHNW1lL1dSRlhBR3FaSWpTMkV1U3lpOFdtZzhRV2V5QTc4V3hKSklhT1ZrQ28yZXRsQXVMNmlBTC9MREMzUnVjbmlIbTFidmxDaDRPYmtsOWd1a3RpK2dSaXhwSlZVTmpPcEk1WGN0aFFWTHlpZHdOcUx0NHlVUy95VkNSc05zbEFNdnFkSlVCVWdhSVY3RHhRSVVvZWZyT1hpWmtpSnZpQnFVNlFIOC9oVkgwM0dqYkxMYU9zVjl5WlpvMmxNWGRzNFBiSUdpTzVaK2k3YXk5clNxb3k1ejMyZCtENXBuc0YwK0VjeDA1VHZuTUdXV1JabW1mRnBkYmFYY1U1WGZia29LL2UzcWJ5WHY2QzNIQXljOWsvUXdLWndzRDJlK1FSTytmdmZiLytDV0hWNjNEUCswcGZwdHFRSEtuTzVHeDEzY1V1RStUZHdNSEZXYWJtQTNDWGxOWkpWbEhXNllLTkY1bXRtQ3E3LzZEV3EwU3dRQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Label"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Text"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"ham","2":"Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...","_rn_":"1"},{"1":"ham","2":"Ok lar... Joking wif u oni...","_rn_":"2"},{"1":"spam","2":"Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&C's apply 08452810075over18's","_rn_":"3"},{"1":"ham","2":"U dun say so early hor... U c already then say...","_rn_":"4"},{"1":"ham","2":"Nah I don't think he goes to usf, he lives around here though","_rn_":"5"},{"1":"spam","2":"FreeMsg Hey there darling it's been 3 week's now and no word back! I'd like some fun you up for it still? Tb ok! XxX std chgs to send, å£1.50 to rcv","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyNDaGVjayBmb3IgbWlzc2luZyBkYXRhXG5sZW5ndGgod2hpY2goIWNvbXBsZXRlLmNhc2VzKHNwYW1EYXRhKSkpXG5gYGAifQ== -->
+<pre class="r"><code>##Check for missing data
+length(which(!complete.cases(spamData)))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDBcbiJ9 -->
+<pre><code>[1] 0</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgRmFjdG9yaXplIHRoZSBsYWVibFxuc3BhbURhdGEkTGFiZWw8LWFzLmZhY3RvcihzcGFtRGF0YSRMYWJlbClcbnByb3AudGFibGUodGFibGUoc3BhbURhdGEkTGFiZWwpKVxuYGBgIn0= -->
+<pre class="r"><code>## Factorize the laebl
+spamData$Label&lt;-as.factor(spamData$Label)
+prop.table(table(spamData$Label))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiXG4gICAgICBoYW0gICAgICBzcGFtIFxuMC44NjU5MzY4IDAuMTM0MDYzMiBcbiJ9 -->
 <pre><code>
       ham      spam 
 0.8659368 0.1340632 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3BhbURhdGEkTGVuZ3RoPC1uY2hhcihzcGFtRGF0YSRUZXh0KVxuc3VtbWFyeShzcGFtRGF0YSRMZW5ndGgpXG5gYGAifQ== -->
+<pre class="r"><code>spamData$Length&lt;-nchar(spamData$Text)
+summary(spamData$Length)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgTWluLiAxc3QgUXUuICBNZWRpYW4gICAgTWVhbiAzcmQgUXUuICAgIE1heC4gXG4gICAyLjAwICAgMzYuMDAgICA2MS4wMCAgIDgwLjEyICAxMjEuMDAgIDkxMC4wMCBcbiJ9 -->
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   2.00   36.00   61.00   80.12  121.00  910.00 </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -206,16 +237,37 @@ $(document).ready(function () {
 <h2>Visualize Data</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxuZ2dwbG90MihzcGFtRGF0YSxhZXMoeD1MZW5ndGgsZmlsbD1MYWJlbCkpK3RoZW1lX2J3KCkrXG4gIGdlb21faGlzdG9ncmFtKGJpbndpZHRoPTUpK2xhYnMoeT1cIlRleHRDb3VudFwiLHg9XCJMZW5ndGggb2YgVGV4dFwiLHRpdGxlPVwiRGlzdHJpYnV0aW9uIG9mIFRleHQgTGVuZ3Roc1wiKVxuYGBcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxuZ2dwbG90KHNwYW1EYXRhLGFlcyh4PUxlbmd0aCxmaWxsPUxhYmVsKSkrdGhlbWVfYncoKStcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGg9NSkrbGFicyh5PVwiVGV4dENvdW50XCIseD1cIkxlbmd0aCBvZiBUZXh0XCIsdGl0bGU9XCJEaXN0cmlidXRpb24gb2YgVGV4dCBMZW5ndGhzXCIpXG5gYGAifQ== -->
 <pre class="r"><code>library(ggplot2)
-ggplot2(spamData,aes(x=Length,fill=Label))+theme_bw()+
-  geom_histogram(binwidth=5)+labs(y=&quot;TextCount&quot;,x=&quot;Length of Text&quot;,title=&quot;Distribution of Text Lengths&quot;)
-``</code></pre>
+ggplot(spamData,aes(x=Length,fill=Label))+theme_bw()+
+  geom_histogram(binwidth=5)+labs(y=&quot;TextCount&quot;,x=&quot;Length of Text&quot;,title=&quot;Distribution of Text Lengths&quot;)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="preprocessing" class="section level2">
+<h2>Preprocessing</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShxdWFudGVkYSlcblxuYGBgIn0= -->
+<pre class="r"><code>library(quanteda)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFja2FnZSB2ZXJzaW9uOiAxLjMuMTRcblBhcmFsbGVsIGNvbXB1dGluZzogMiBvZiA4IHRocmVhZHMgdXNlZC5cblNlZSBodHRwczovL3F1YW50ZWRhLmlvIGZvciB0dXRvcmlhbHMgYW5kIGV4YW1wbGVzLlxuXG5BdHRhY2hpbmcgcGFja2FnZTog46S847ixcXVhbnRlZGHjpLzjuLJcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g46S847ixcGFja2FnZTp1dGlsc+OkvOO4sjpcblxuICAgIFZpZXdcbiJ9 -->
+<pre><code>Package version: 1.3.14
+Parallel computing: 2 of 8 threads used.
+See https://quanteda.io for tutorials and examples.
+
+Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;quanteda&lt;U+393C&gt;&lt;U+3E32&gt;
+
+The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:utils&lt;U+393C&gt;&lt;U+3E32&gt;:
+
+    View</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIyBJbnN0YWxsIFBhY2thZ2VzDQpgYGB7cn0NCmluc3RhbGwucGFja2FnZXMoYygiZ2dwbG90MiIsImUxMDcxIiwiY2FyZXQiLCJxdWFudGVkYSIsImlybGJhIiwicmFuZG9tRm9yZXN0IikpDQpgYGANCg0KIyMgUmVhZCBhbmQgQ2xlYW4gRGF0YQ0KYGBge3J9DQpyYXdTcGFtRGF0YT1yZWFkLmNzdigiZGF0YS9zcGFtLmNzdiIsc3RyaW5nc0FzRmFjdG9ycyA9IEZBTFNFKQ0KIyBWaWV3KHJhd1NwYW1EYXRhKQ0KDQpzcGFtRGF0YT1yYXdTcGFtRGF0YVssMToyXQ0Kcm0ocmF3U3BhbURhdGEpDQpuYW1lcyhzcGFtRGF0YSk8LWMoJ0xhYmVsJywnVGV4dCcpDQpoZWFkKHNwYW1EYXRhKQ0KDQojI0NoZWNrIGZvciBtaXNzaW5nIGRhdGENCmxlbmd0aCh3aGljaCghY29tcGxldGUuY2FzZXMoc3BhbURhdGEpKSkNCg0KIyMgRmFjdG9yaXplIHRoZSBsYWVibA0Kc3BhbURhdGEkTGFiZWw8LWFzLmZhY3RvcihzcGFtRGF0YSRMYWJlbCkNCg0KcHJvcC50YWJsZSh0YWJsZShzcGFtRGF0YSRMYWJlbCkpDQoNCnNwYW1EYXRhJExlbmd0aDwtbmNoYXIoc3BhbURhdGEkVGV4dCkNCnN1bW1hcnkoc3BhbURhdGEkTGVuZ3RoKQ0KYGBgDQojIyBWaXN1YWxpemUgRGF0YQ0KYGBge3J9DQpsaWJyYXJ5KGdncGxvdDIpDQpnZ3Bsb3QyKHNwYW1EYXRhLGFlcyh4PUxlbmd0aCxmaWxsPUxhYmVsKSkrdGhlbWVfYncoKSsNCiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGg9NSkrbGFicyh5PSJUZXh0Q291bnQiLHg9Ikxlbmd0aCBvZiBUZXh0Iix0aXRsZT0iRGlzdHJpYnV0aW9uIG9mIFRleHQgTGVuZ3RocyIpDQpgYA==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIyBJbnN0YWxsIFBhY2thZ2VzDQpgYGB7cn0NCmluc3RhbGwucGFja2FnZXMoYygiZ2dwbG90MiIsImUxMDcxIiwiY2FyZXQiLCJxdWFudGVkYSIsImlybGJhIiwicmFuZG9tRm9yZXN0IikpDQpgYGANCg0KIyMgUmVhZCBEYXRhDQpgYGB7cn0NCnJhd1NwYW1EYXRhPXJlYWQuY3N2KCJkYXRhL3NwYW0uY3N2IixzdHJpbmdzQXNGYWN0b3JzID0gRkFMU0UpDQojIFZpZXcocmF3U3BhbURhdGEpDQoNCnNwYW1EYXRhPXJhd1NwYW1EYXRhWywxOjJdDQpybShyYXdTcGFtRGF0YSkNCm5hbWVzKHNwYW1EYXRhKTwtYygnTGFiZWwnLCdUZXh0JykNCmhlYWQoc3BhbURhdGEpDQoNCiMjQ2hlY2sgZm9yIG1pc3NpbmcgZGF0YQ0KbGVuZ3RoKHdoaWNoKCFjb21wbGV0ZS5jYXNlcyhzcGFtRGF0YSkpKQ0KDQojIyBGYWN0b3JpemUgdGhlIGxhZWJsDQpzcGFtRGF0YSRMYWJlbDwtYXMuZmFjdG9yKHNwYW1EYXRhJExhYmVsKQ0KDQpwcm9wLnRhYmxlKHRhYmxlKHNwYW1EYXRhJExhYmVsKSkNCg0Kc3BhbURhdGEkTGVuZ3RoPC1uY2hhcihzcGFtRGF0YSRUZXh0KQ0Kc3VtbWFyeShzcGFtRGF0YSRMZW5ndGgpDQpgYGANCiMjIFZpc3VhbGl6ZSBEYXRhDQpgYGB7cn0NCmxpYnJhcnkoZ2dwbG90MikNCmdncGxvdChzcGFtRGF0YSxhZXMoeD1MZW5ndGgsZmlsbD1MYWJlbCkpK3RoZW1lX2J3KCkrDQogIGdlb21faGlzdG9ncmFtKGJpbndpZHRoPTUpK2xhYnMoeT0iVGV4dENvdW50Iix4PSJMZW5ndGggb2YgVGV4dCIsdGl0bGU9IkRpc3RyaWJ1dGlvbiBvZiBUZXh0IExlbmd0aHMiKQ0KYGBgDQojIyBQcmVwcm9jZXNzaW5nDQpgYGB7cn0NCmxpYnJhcnkoY2FyZXQpDQpzZXQuc2VlZCgzMjk4NCkNCmluZGV4ZXM8LWNyZWF0ZURhdGFQYXJ0aXRpb24oc3BhbURhdGEkTGFiZWwsdGltZXM9MSxwPTAuNyxsaXN0PUZBTFNFKQ0KdHJhaW48LXNwYW1EYXRhW2luZGV4ZXMsXQ0KdGVzdDwtc3BhbURhdGFbLWluZGV4ZXMsXQ0KDQojVmVyaWZ5IHByb3BydGlvbnMNCnByb3AudGFibGUodGFibGUodHJhaW4kTGFiZWwpKQ0KcHJvcC50YWJsZSh0YWJsZSh0ZXN0JExhYmVsKSkNCg0KI1Rva2VuaXplIHRoZSB0ZXh0DQpsaWJyYXJ5KHF1YW50ZWRhKQ0KdHJhaW5Ub2tlbnM8LXRva2Vucyh0cmFpbiRUZXh0LHdoYXQ9J3dvcmQnLA0KICAgICAgICAgICAgICAgICAgICByZW1vdmVfcHVuY3QgPSBUUlVFLHJlbW92ZV9udW1iZXJzID0gVFJVRSwNCiAgICAgICAgICAgICAgICAgICAgcmVtb3ZlX2h5cGhlbnMgPSBUUlVFLHJlbW92ZV9zeW1ib2xzID0gVFJVRSkNCg0KI1JlbW92ZSBzdG9wd29yZHMNCnRyYWluVG9rZW5zPC10b2tlbnNfdG9sb3dlcih0cmFpblRva2VucykNCnRyYWluVG9rZW5zPC10b2tlbnNfc2VsZWN0KHRyYWluVG9rZW5zLHN0b3B3b3JkcygpLHNlbGVjdGlvbiA9ICJyZW1vdmUiKQ0KdHJhaW5Ub2tlbnM8LXRva2Vuc193b3Jkc3RlbSh0cmFpblRva2VucyxsYW5ndWFnZSA9ICJlbmdsaXNoIikNCg0KI0JhZyBvZiBXb3Jkcw0KdHJhaW5Ub2tlbnM8LWRmbSh0cmFpblRva2Vucyx0b2xvd2VyID0gRkFMU0UpDQpgYGANCg==</div>
 
 
 
