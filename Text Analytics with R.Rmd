@@ -1,0 +1,37 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Install Packages
+```{r}
+install.packages(c("ggplot2","e1071","caret","quanteda","irlba","randomForest"))
+```
+
+## Read and Clean Data
+```{r}
+rawSpamData=read.csv("data/spam.csv",stringsAsFactors = FALSE)
+# View(rawSpamData)
+
+spamData=rawSpamData[,1:2]
+rm(rawSpamData)
+names(spamData)<-c('Label','Text')
+head(spamData)
+
+##Check for missing data
+length(which(!complete.cases(spamData)))
+
+## Factorize the laebl
+spamData$Label<-as.factor(spamData$Label)
+
+prop.table(table(spamData$Label))
+
+spamData$Length<-nchar(spamData$Text)
+summary(spamData$Length)
+```
+## Visualize Data
+```{r}
+library(ggplot2)
+ggplot2(spamData,aes(x=Length,fill=Label))+theme_bw()+
+  geom_histogram(binwidth=5)+labs(y="TextCount",x="Length of Text",title="Distribution of Text Lengths")
+``
